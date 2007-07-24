@@ -1,0 +1,68 @@
+# ArchGenXML generated POT File
+# Mikel Larreategi <mlarreategi@codesyntax.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: zorionagurra\n"
+"POT-Creation-Date: Tue Jul 24 17:02:11 2007\n"
+"PO-Revision-Date: Tue Jul 24 17:02:11 2007\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: zorionagurra\n"
+
+#. Default: "name"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_name"
+msgstr ""
+
+#. Default: "photo"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_photo"
+msgstr ""
+
+#. Default: "surname"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_surname"
+msgstr ""
+
+#. Default: "text"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_text"
+msgstr ""
+
+#. Default: "title"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_title"
+msgstr ""
+
+#. Default: "Name"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_name"
+msgstr ""
+
+#. Default: "Photo"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_photo"
+msgstr ""
+
+#. Default: "Surname"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_surname"
+msgstr ""
+
+#. Default: "Text"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_text"
+msgstr ""
+
+#. Default: "Title"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_title"
+msgstr ""
+
