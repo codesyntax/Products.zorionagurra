@@ -8,12 +8,14 @@ except ImportError:
 
 from Products.zorionagurra.config import *
 
+import DateTime
+
 schema = Schema((
 
     StringField(
         name='name',
         required=1,
-        searchable=0
+        searchable=0,
         widget=StringWidget(
             label='Name',
             label_msgid='zorionagurra_label_name',
@@ -32,6 +34,21 @@ schema = Schema((
             description_msgid='zorionagurra_help_surname',
             i18n_domain='zorionagurra',
         )
+    ),
+
+    DateTimeField(
+        name='date',
+        index='FieldIndex:schema',
+        languageIndependent = True,
+        default=DateTime.DateTime(),
+        widget=CalendarWidget(
+            show_hm=False,
+            label="Date",
+            description='Select the day of this element',
+            label_msgid='zorionagurra_label_date',
+            description_msgid="zorionagurra_help_date",
+            i18n_domain="zorionagurra",
+            ),
     ),
 
     ComputedField(
@@ -91,15 +108,6 @@ schema = Schema((
 Zorionagurra_schema = BaseSchema.copy() + \
     schema.copy()
 
-Zorionagurra_schema['effectiveDate'].schemata = 'default'
-Zorionagurra_schema['effectiveDate'].default = DateTime.DateTime()
-Zorionagurra_schema['effectiveDate'].widget.show_hm = False
-Zorionagurra_schema['effectiveDate'].widget.label='Data'
-Zorionagurra_schema['effectiveDate'].widget.label_msgid='zorionagurara_label_date'
-Zorionagurra_schema['effectiveDate'].widget.description='Select the day of this element'
-Zorionagurra_schema['effectiveDate'].widget.description_msgid='zorionagurra_help_date'
-Zorionagurra_schema['effectiveDate'].widget.i18n_domain='zorionagurra'
-
 Zorionagurra_schema['description'].required = 0
 Zorionagurra_schema['description'].widget.visible = {'edit':'hidden',
                                                      'view':'hidden',
@@ -107,9 +115,6 @@ Zorionagurra_schema['description'].widget.visible = {'edit':'hidden',
 Zorionagurra_schema['allowDiscussion'].widget.visible = {'edit':'hidden',
                                                          'view':'hidden',
                                                          }
-Zorionagurra_schema.moveField('effectiveDate', after='surname')
-
-
 class Zorionagurra(BaseContent):
     """
     """
@@ -139,6 +144,11 @@ class Zorionagurra(BaseContent):
     def at_post_create_script(self):
         """ Post creation hook """
         self._renameAfterCreation()
+        self.setExpirationDate(DateTime.DateTime(self.Date()).earliestTime() + 1)
+
+    def at_post_edit_script(self):
+        """ Post edit hook """
+        self.setExpirationDate(DateTime.DateTime(self.Date()).earliestTime() + 1)        
 
     def computeFullname(self):
         name = self.getField('name').getAccessor(self)()

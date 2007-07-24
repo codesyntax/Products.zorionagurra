@@ -66,3 +66,13 @@ msgstr ""
 msgid "zorionagurra_label_title"
 msgstr ""
 
+
+#. Default: "Date"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_date"
+msgstr ""
+
+#. Default: "Select the day of this element"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_date"
+msgstr ""

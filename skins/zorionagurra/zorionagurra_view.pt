@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="zorionagurra">
+
+<head>
+
+
+</head>
+
+<body>
+
+  <div metal:define-macro="body">
+
+    <div class="newsImageContainer"
+         tal:condition="here/photo_preview|nothing">
+      
+      <a href="#"
+         tal:attributes="href string:$here_url/photo/image_view_fullscreen">
+        <img tal:replace="structure here/photo_preview" />
+      </a>
+      
+    </div>
+    
+    <p class="data"
+       tal:content="python:toLocalizedTime(here.getDate(),long_format=0)">Date</p>
+    
+    <div class="plain">
+      <div tal:replace="structure here/getText" />
+    </div>
+    <div class="visualClear"></div>
+    
+  </div>
+</body>
+</html>
