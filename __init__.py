@@ -39,14 +39,7 @@ DirectoryView.registerDirectory('skins', product_globals)
 DirectoryView.registerDirectory('skins/zorionagurra',
                                     product_globals)
 
-##code-section custom-init-head #fill in your manual code here
-##/code-section custom-init-head
-
-
 def initialize(context):
-    ##code-section custom-init-top #fill in your manual code here
-    ##/code-section custom-init-top
-
     # imports packages and types for registration
     import content
 
@@ -64,11 +57,4 @@ def initialize(context):
         fti                = ftis,
         ).initialize(context)
 
-    # Apply customization-policy, if theres any
-    if CustomizationPolicy and hasattr(CustomizationPolicy, 'register'):
-        CustomizationPolicy.register(context)
-        print 'Customization policy for zorionagurra installed'
-
-    ##code-section custom-init-bottom #fill in your manual code here
-    ##/code-section custom-init-bottom
 

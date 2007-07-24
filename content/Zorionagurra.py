@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from AccessControl import ClassSecurityInfo
-from Products.Archetypes.atapi import *
-from Products.zorionagurra.config import *
 
-##code-section module-header #fill in your manual code here
-##/code-section module-header
+try:
+    from Products.LinguaPlone.public import *
+except ImportError:
+    from Products.Archetypes.atapi import *
+
+from Products.zorionagurra.config import *
 
 schema = Schema((
 
@@ -65,14 +67,8 @@ schema = Schema((
 ),
 )
 
-##code-section after-local-schema #fill in your manual code here
-##/code-section after-local-schema
-
 Zorionagurra_schema = BaseSchema.copy() + \
     schema.copy()
-
-##code-section after-schema #fill in your manual code here
-##/code-section after-schema
 
 class Zorionagurra(BaseContent):
     """
@@ -99,17 +95,10 @@ class Zorionagurra(BaseContent):
 
     schema = Zorionagurra_schema
 
-    ##code-section class-header #fill in your manual code here
-    ##/code-section class-header
-
     # Methods
 
 
 registerType(Zorionagurra, PROJECTNAME)
-# end of class Zorionagurra
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
 
 
 
