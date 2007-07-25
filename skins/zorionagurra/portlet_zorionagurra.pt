@@ -3,7 +3,8 @@
       i18n:domain="zorionagurra">
 <body>
 
-<div metal:define-macro="portlet">
+<div metal:define-macro="portlet"
+     tal:define="view here/@@last_zorionagurrak">
   <dt class="portletHeader">
     <span class="portletTopLeft"></span>
     <a href="#" tal:attributes="href
@@ -14,20 +15,20 @@
     <span class="portletTopRight"></span>
   </dt>
 
-  <tal:items repeat="item here/@@last_zorionagurrak">
+  <tal:items repeat="item python:view.getLastZorionagurrak(5)">
     <dd tal:define="oddrow repeat/item/odd;
                     item_object python:item.getObject();
                     item_type_class python:'contenttype-' + here.plone_utils.normalizeString(item.portal_type)"
-        tal:attributes="class test(oddrow, 'portletItem even', 'portletItem odd')">
+        tal:attributes="class python:test(oddrow, 'portletItem even', 'portletItem odd')">
       <div tal:attributes="class item_type_class">
-        <img src="#" tal:replace="item_object/photo_thumb" />
+        <img src="#" tal:replace="structure item_object/photo_thumb" />
         <a href="#"
            tal:attributes="href item/getURL"
            tal:content="item/Title">
           Name
         </a>
         <span class="portletItemDetails"
-              tal:content="toLocalizedTime(item.getDate, long_format=0)">
+              tal:content="python:toLocalizedTime(item.getDate, long_format=0)">
           Date
         </span>
         <p tal:replace="structure item_object/getText">

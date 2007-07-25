@@ -38,7 +38,7 @@ schema = Schema((
 
     DateTimeField(
         name='date',
-        index='FieldIndex:schema',
+        index='DateIndex:schema',
         languageIndependent = True,
         default=DateTime.DateTime(),
         widget=CalendarWidget(

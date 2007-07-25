@@ -68,36 +68,12 @@ def install(self, reinstall=False):
         ] + factory_tool.getFactoryTypes().keys()
     factory_tool.manage_setPortalFactoryTypes(listOfTypeIds=factory_types)
 
-    from Products.zorionagurra.config import STYLESHEETS
-    try:
-        portal_css = getToolByName(portal, 'portal_css')
-        for stylesheet in STYLESHEETS:
-            try:
-                portal_css.unregisterResource(stylesheet['id'])
-            except:
-                pass
-            defaults = {'id': '',
-            'media': 'all',
-            'enabled': True}
-            defaults.update(stylesheet)
-            portal_css.registerStylesheet(**defaults)
-    except:
-        # No portal_css registry
-        pass
-    from Products.zorionagurra.config import JAVASCRIPTS
-    try:
-        portal_javascripts = getToolByName(portal, 'portal_javascripts')
-        for javascript in JAVASCRIPTS:
-            try:
-                portal_javascripts.unregisterResource(javascript['id'])
-            except:
-                pass
-            defaults = {'id': ''}
-            defaults.update(javascript)
-            portal_javascripts.registerScript(**defaults)
-    except:
-        # No portal_javascripts registry
-        pass
+    # Give the response types a "save" target to take the use back to the
+    # issue itself, after updating the parent issue
+    controller = getToolByName(self, 'portal_form_controller')
+    addFormControllerAction(self, out, controller, 'validate_integrity',
+                            'success', 'Zorionagurra', None, 'traverse_to', 'string:zorionagurra_post')
+
 
     # try to call a custom install method
     # in 'AppInstall.py' method 'install'
@@ -211,3 +187,12 @@ def afterInstall(self, reinstall, product):
     else:
         print >>out, 'no custom afterInstall'
     return out
+
+
+
+def addFormControllerAction(self, out, controller, template, status, 
+                                contentType, button, actionType, action):
+    """Add the given action to the portalFormController"""
+    controller.addFormAction(template, status, contentType,
+                                button, actionType, action)
+    print >> out, "Added action %s to %s" % (action, template)

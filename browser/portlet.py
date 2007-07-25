@@ -4,7 +4,7 @@ from Acquisition import aq_inner
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 
-import DateTime
+from DateTime import DateTime
 
 class LastZorionagurrak(BrowserView):
 
@@ -22,7 +22,7 @@ class LastZorionagurrak(BrowserView):
                                     'range':'min:max'},
                            sort_on='getDate',
                            sort_limit=num)
-
+        
         todaybrainnumber = len(todaybrains)
         if todaybrainnumber >= num:
             return todaybrains
@@ -31,7 +31,7 @@ class LastZorionagurrak(BrowserView):
             tomorrowbrainnumber = num - todaybrainnumber
             tomorrowbrains = pcal(portal_type='Zorionagurra',
                                   review_state='published',
-                                  getDate={'query':(todayend),
+                                  getDate={'query':(todayend,),
                                            'range':'min'},
                                   sort_on='getDate',
                                   sort_limit=tomorrowbrainnumber)
