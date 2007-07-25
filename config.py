@@ -60,3 +60,8 @@ try:
     from Products.zorionagurra.AppConfig import *
 except ImportError:
     pass
+
+
+DISPLAY_VIEWS = {
+     'Folder' : ('zorionagurra_multiple_view',),
+          }

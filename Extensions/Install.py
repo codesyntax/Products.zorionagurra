@@ -14,7 +14,7 @@ from Products.Archetypes.Extensions.utils import installTypes
 from Products.Archetypes.Extensions.utils import install_subskin
 from Products.Archetypes.config import TOOL_NAME as ARCHETYPETOOLNAME
 from Products.Archetypes.atapi import listTypes
-from Products.zorionagurra.config import PROJECTNAME
+from Products.zorionagurra.config import PROJECTNAME, DISPLAY_VIEWS
 from Products.zorionagurra.config import product_globals as GLOBALS
 
 def install(self, reinstall=False):
@@ -41,7 +41,10 @@ def install(self, reinstall=False):
                  classes,
                  PROJECTNAME)
     install_subskin(self, out, GLOBALS)
+    if DISPLAY_VIEWS:
+        setupDisplayViews(self, out, DISPLAY_VIEWS)
 
+    
 
     # try to call a workflow install method
     # in 'InstallWorkflows.py' method 'installWorkflows'
@@ -196,3 +199,14 @@ def addFormControllerAction(self, out, controller, template, status,
     controller.addFormAction(template, status, contentType,
                                 button, actionType, action)
     print >> out, "Added action %s to %s" % (action, template)
+
+def setupDisplayViews(self, out, dict):
+    tool = getToolByName(self, 'portal_types')
+    for pt, views in dict.items():
+        FTI = getattr(tool, pt)
+        nviews = FTI.view_methods
+        for view in views:
+            if view not in nviews:
+                nviews += (view,)
+        FTI.view_methods = nviews
+        print >> out, "Registered display views for %s in portal_types." % pt
