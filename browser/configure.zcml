@@ -1,0 +1,12 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+  <browser:page
+      for="*"
+      name="last_zorionagurrak"
+      class=".portlet.LastZorionagurrak"
+      permission="zope.Public"
+      allowed_attributes="getLastZorionagurrak"
+      />
+
+</configure>
