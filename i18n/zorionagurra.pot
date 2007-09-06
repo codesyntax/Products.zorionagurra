@@ -1,0 +1,112 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2007-09-06 08:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: zorionagurra\n"
+
+#. Default: "There are currently no items in this folder."
+#: ../skins/zorionagurra/zorionagurra_multiple_view.pt:91
+msgid "description_no_items_in_folder"
+msgstr ""
+
+#. Default: "Zorion-agurrak"
+#: ../skins/zorionagurra/portlet_zorionagurra.pt:10
+msgid "header_zorionagurrak"
+msgstr ""
+
+#. Default: "Send zorion-agurra"
+#: ../skins/zorionagurra/portlet_zorionagurra.pt:43
+msgid "label_send_zorionagurra"
+msgstr ""
+
+# ArchGenXML generated POT File
+# Mikel Larreategi <mlarreategi@codesyntax.com>, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: zorionagurra\n"
+"POT-Creation-Date: Tue Jul 24 17:02:11 2007\n"
+"PO-Revision-Date: Tue Jul 24 17:02:11 2007\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: latin1 utf-8\n"
+"Domain: zorionagurra\n"
+
+#. Default: "name"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_name"
+msgstr ""
+
+#. Default: "photo"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_photo"
+msgstr ""
+
+#. Default: "surname"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_surname"
+msgstr ""
+
+#. Default: "text"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_text"
+msgstr ""
+
+#. Default: "title"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_title"
+msgstr ""
+
+#. Default: "Name"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_name"
+msgstr ""
+
+#. Default: "Photo"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_photo"
+msgstr ""
+
+#. Default: "Surname"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_surname"
+msgstr ""
+
+#. Default: "Text"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_text"
+msgstr ""
+
+#. Default: "Title"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_title"
+msgstr ""
+
+
+#. Default: "Date"
+#: content/Zorionagurra.py
+msgid "zorionagurra_label_date"
+msgstr ""
+
+#. Default: "Select the day of this element"
+#: content/Zorionagurra.py
+msgid "zorionagurra_help_date"
+msgstr ""
