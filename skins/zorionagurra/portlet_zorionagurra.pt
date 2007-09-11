@@ -5,6 +5,8 @@
 
 <div metal:define-macro="portlet"
      tal:define="view here/@@last_zorionagurrak">
+
+ <dl class="portlet" id="portlet-zorionagurrak">
   <dt class="portletHeader">
     <span class="portletTopLeft"></span>
     <a href="#" tal:attributes="href
@@ -36,6 +38,7 @@
         </p>
       </div>
     </dd>
+    <div class="visualClear"><!-- --></div>
   </tal:items>
 
   <dd class="portletFooter">
@@ -47,6 +50,7 @@
     </a>
     <span class="portletBottomRight"></span>
   </dd>
+ </dl>
 </div>
 </body>
 </html>

@@ -63,5 +63,6 @@ except ImportError:
 
 
 DISPLAY_VIEWS = {
-     'Folder' : ('zorionagurra_multiple_view',),
-          }
+    'Topic'  : ('zorionagurra_multiple_view',),
+    'Folder' : ('zorionagurra_multiple_view',),
+    }

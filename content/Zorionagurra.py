@@ -159,6 +159,10 @@ class Zorionagurra(BaseContent):
             space = ''
         return "%s%s%s" % (name, space, surname)
 
+    def Description(self):
+        """ Return the description """
+
+        return self.getText()
 
 registerType(Zorionagurra, PROJECTNAME)
 
