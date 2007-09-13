@@ -144,11 +144,11 @@ class Zorionagurra(BaseContent):
     def at_post_create_script(self):
         """ Post creation hook """
         self._renameAfterCreation()
-        self.setExpirationDate(DateTime.DateTime(self.Date()).earliestTime() + 1)
+        self.setExpirationDate(DateTime.DateTime(self.getDate()).earliestTime() + 1)
 
     def at_post_edit_script(self):
         """ Post edit hook """
-        self.setExpirationDate(DateTime.DateTime(self.Date()).earliestTime() + 1)        
+        self.setExpirationDate(DateTime.DateTime(self.getDate()).earliestTime() + 1)        
 
     def computeFullname(self):
         name = self.getField('name').getAccessor(self)()
@@ -163,6 +163,11 @@ class Zorionagurra(BaseContent):
         """ Return the description """
 
         return self.getText()
+
+
+#    def EffectiveDate(self):
+#        """ Return the effective date """
+#        return self.created()
 
 registerType(Zorionagurra, PROJECTNAME)
 
