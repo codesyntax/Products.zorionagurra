@@ -43,26 +43,5 @@ DEPENDENCIES = []
 # override in custom configuration
 PRODUCT_DEPENDENCIES = []
 
-# You can overwrite these two in an AppConfig.py:
-# STYLESHEETS = [{'id': 'my_global_stylesheet.css'},
-#                {'id': 'my_contenttype.css',
-#                 'expression': 'python:object.getTypeInfo().getId() == "MyType"'}]
-# You can do the same with JAVASCRIPTS.
-STYLESHEETS = []
-JAVASCRIPTS = []
-
-##code-section config-bottom #fill in your manual code here
-##/code-section config-bottom
 
 
-# Load custom configuration not managed by ArchGenXML
-try:
-    from Products.zorionagurra.AppConfig import *
-except ImportError:
-    pass
-
-
-DISPLAY_VIEWS = {
-    'Topic'  : ('zorionagurra_multiple_view',),
-    'Folder' : ('zorionagurra_multiple_view',),
-    }

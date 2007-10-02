@@ -14,7 +14,7 @@ from Products.Archetypes.Extensions.utils import installTypes
 from Products.Archetypes.Extensions.utils import install_subskin
 from Products.Archetypes.config import TOOL_NAME as ARCHETYPETOOLNAME
 from Products.Archetypes.atapi import listTypes
-from Products.zorionagurra.config import PROJECTNAME, DISPLAY_VIEWS
+from Products.zorionagurra.config import PROJECTNAME
 from Products.zorionagurra.config import product_globals as GLOBALS
 
 def install(self, reinstall=False):
@@ -41,27 +41,13 @@ def install(self, reinstall=False):
                  classes,
                  PROJECTNAME)
     install_subskin(self, out, GLOBALS)
-    if DISPLAY_VIEWS:
-        setupDisplayViews(self, out, DISPLAY_VIEWS)
 
-    
-
-    # try to call a workflow install method
-    # in 'InstallWorkflows.py' method 'installWorkflows'
-    try:
-        installWorkflows = ExternalMethod('temp', 'temp',
-                                          PROJECTNAME+'.InstallWorkflows',
-                                          'installWorkflows').__of__(self)
-    except NotFound:
-        installWorkflows = None
-
-    if installWorkflows:
-        print >>out,'Workflow Install:'
-        res = installWorkflows(self,out)
-        print >>out,res or 'no output'
-    else:
-        print >>out,'no workflow install'
-
+    portal = getToolByName(self,'portal_url').getPortalObject()
+    setup_tool = getToolByName(portal, 'portal_setup')
+    setup_tool.setImportContext('profile-Products.zorionagurra:Zorionagurra')
+    setup_tool.runAllImportSteps()
+    setup_tool.setImportContext('profile-CMFPlone:plone')
+    print >> out, "Ran all install steps"
 
 
     # enable portal_factory for given types
@@ -78,69 +64,12 @@ def install(self, reinstall=False):
                             'success', 'Zorionagurra', None, 'traverse_to', 'string:zorionagurra_post')
 
 
-    # try to call a custom install method
-    # in 'AppInstall.py' method 'install'
-    try:
-        install = ExternalMethod('temp', 'temp',
-                                 PROJECTNAME+'.AppInstall', 'install')
-    except NotFound:
-        install = None
-
-    if install:
-        print >>out,'Custom Install:'
-        try:
-            res = install(self, reinstall)
-        except TypeError:
-            res = install(self)
-        if res:
-            print >>out,res
-        else:
-            print >>out,'no output'
-    else:
-        print >>out,'no custom install'
     return out.getvalue()
 
 def uninstall(self, reinstall=False):
     out = StringIO()
 
-
-
-    # try to call a workflow uninstall method
-    # in 'InstallWorkflows.py' method 'uninstallWorkflows'
-    try:
-        uninstallWorkflows = ExternalMethod('temp', 'temp',
-                                            PROJECTNAME+'.InstallWorkflows',
-                                            'uninstallWorkflows').__of__(self)
-    except NotFound:
-        uninstallWorkflows = None
-
-    if uninstallWorkflows:
-        print >>out, 'Workflow Uninstall:'
-        res = uninstallWorkflows(self, out)
-        print >>out, res or 'no output'
-    else:
-        print >>out,'no workflow uninstall'
-
-    # try to call a custom uninstall method
-    # in 'AppInstall.py' method 'uninstall'
-    try:
-        uninstall = ExternalMethod('temp', 'temp',
-                                   PROJECTNAME+'.AppInstall', 'uninstall')
-    except:
-        uninstall = None
-
-    if uninstall:
-        print >>out,'Custom Uninstall:'
-        try:
-            res = uninstall(self, reinstall)
-        except TypeError:
-            res = uninstall(self)
-        if res:
-            print >>out,res
-        else:
-            print >>out,'no output'
-    else:
-        print >>out,'no custom uninstall'
+    print >> out, 'Nothing to be uninstalled'
 
     return out.getvalue()
 
