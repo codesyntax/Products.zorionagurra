@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2007-09-06 08:33+0000\n"
+"POT-Creation-Date: 2007-09-14 10:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,12 +23,12 @@ msgid "description_no_items_in_folder"
 msgstr ""
 
 #. Default: "Zorion-agurrak"
-#: ../skins/zorionagurra/portlet_zorionagurra.pt:10
+#: ../skins/zorionagurra/portlet_zorionagurra.pt:12
 msgid "header_zorionagurrak"
 msgstr ""
 
 #. Default: "Send zorion-agurra"
-#: ../skins/zorionagurra/portlet_zorionagurra.pt:43
+#: ../skins/zorionagurra/portlet_zorionagurra.pt:46
 msgid "label_send_zorionagurra"
 msgstr ""
 

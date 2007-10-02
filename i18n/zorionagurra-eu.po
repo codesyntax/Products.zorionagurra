@@ -20,12 +20,12 @@ msgid "description_no_items_in_folder"
 msgstr "Ez dago elementurik"
 
 #. Default: "Zorion-agurrak"
-#: ../skins/zorionagurra/portlet_zorionagurra.pt:10
+#: ../skins/zorionagurra/portlet_zorionagurra.pt:12
 msgid "header_zorionagurrak"
 msgstr "Zorion-agurrak"
 
 #. Default: "Send zorion-agurra"
-#: ../skins/zorionagurra/portlet_zorionagurra.pt:43
+#: ../skins/zorionagurra/portlet_zorionagurra.pt:46
 msgid "label_send_zorionagurra"
 msgstr "Zorion-agurra bidali"
 
