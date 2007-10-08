@@ -12,7 +12,7 @@
 
   <div metal:define-macro="body">
 
-    <div class="newsImageContainer"
+    <div class="zorionagurraImageContainer"
          tal:condition="here/photo_preview|nothing">
       
       <a href="#"
