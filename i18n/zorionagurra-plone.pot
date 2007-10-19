@@ -16,3 +16,6 @@ msgstr ""
 
 msgid "Zorionagurra"
 msgstr ""
+
+msgid "Multiple zorionagurra view"
+msgstr ""

@@ -41,7 +41,7 @@
     <div class="visualClear"><!-- --></div>
   </tal:items>
 
-  <dd class="portletFooter">
+  <dd class="portletFooter additem">
     <span class="portletBottomLeft"></span>
     <a href="" tal:attributes="href
                                string:${portal_url}/zorion-agurrak/createObject?type_name=Zorionagurra"
