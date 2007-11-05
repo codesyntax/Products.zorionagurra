@@ -23,7 +23,10 @@
                     item_type_class python:'contenttype-' + here.plone_utils.normalizeString(item.portal_type)"
         tal:attributes="class python:test(oddrow, 'portletItem even', 'portletItem odd')">
       <div tal:attributes="class item_type_class">
-        <img src="#" tal:replace="structure item_object/photo_thumb" />
+        <a href="#"
+           tal:attributes="href item/getURL">
+          <img src="#" tal:replace="structure item_object/photo_thumb" />
+        </a>
         <a href="#"
            tal:attributes="href item/getURL"
            tal:content="item/Title">
