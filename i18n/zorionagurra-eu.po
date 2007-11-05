@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: Tue Jul 24 17:02:11 2007\n"
-"PO-Revision-Date: 2007-09-06 10:36+0100\n"
+"PO-Revision-Date: 2007-11-05 10:19+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Zorion-agurra bidali"
 #. Default: "Select the day of this element"
 #: content/Zorionagurra.py
 msgid "zorionagurra_help_date"
-msgstr "Aukeratu zein egunetan argitaratu behar den zorion-agurra"
+msgstr "Zein da urtebetetze-eguna?"
 
 #. Default: "name"
 #: content/Zorionagurra.py
