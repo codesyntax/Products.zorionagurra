@@ -164,10 +164,12 @@ class Zorionagurra(BaseContent):
 
         return self.getText()
 
-
-#    def EffectiveDate(self):
-#        """ Return the effective date """
-#        return self.created()
+    def tag(self, **kwargs):
+        """Generate image tag using the api of the ImageField
+        """
+        if 'title' not in kwargs:
+            kwargs['title'] = self.Title()
+        return self.getField('photo').tag(self, **kwargs)
 
 registerType(Zorionagurra, PROJECTNAME)
 
