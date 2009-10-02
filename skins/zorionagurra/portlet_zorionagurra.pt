@@ -4,7 +4,8 @@
 <body>
 
 <div metal:define-macro="portlet"
-     tal:define="view here/@@last_zorionagurrak">
+     tal:define="view here/@@last_zorionagurrak"
+     tal:condition="view/getLastZorionagurrak">
 
  <dl class="portlet" id="portlet-zorionagurrak">
   <dt class="portletHeader">
