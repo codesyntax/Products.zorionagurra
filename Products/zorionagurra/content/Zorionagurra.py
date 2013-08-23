@@ -111,10 +111,6 @@ Zorionagurra_schema['description'].required = 0
 Zorionagurra_schema['description'].widget.visible = {'edit': 'hidden',
                                                      'view': 'hidden',
                                                      }
-Zorionagurra_schema['allowDiscussion'].widget.visible = {'edit': 'hidden',
-                                                         'view': 'hidden',
-                                                         }
-
 
 class Zorionagurra(BaseContent):
     """ Birthday greeting """
