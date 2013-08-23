@@ -1,60 +1,44 @@
-# -*- coding: utf-8 -*-
+"""Main product initializer
+"""
 
-# There are three ways to inject custom code here:
-#
-#   - To set global configuration variables, create a file AppConfig.py.
-#       This will be imported in config.py, which in turn is imported in
-#       each generated class and in this file.
-#   - To perform custom initialisation after types have been registered,
-#       use the protected code section at the bottom of initialize().
-#   - To register a customisation policy, create a file CustomizationPolicy.py
-#       with a method register(context) to register the policy.
+from zope.i18nmessageid import MessageFactory
+from Products.zorionagurra import config
+from Products.CMFCore import utils
+from Products.Archetypes import atapi
 
-import logging
-logger = logging.getLogger('zorionagurra')
-logger.info('Installing Product')
-
-try:
-    import CustomizationPolicy
-except ImportError:
-    CustomizationPolicy = None
-
-import os, os.path
-from Globals import package_home
-from Products.CMFCore import utils as cmfutils
-
-try: # New CMF
-    from Products.CMFCore import permissions as CMFCorePermissions 
-except: # Old CMF
-    from Products.CMFCore import CMFCorePermissions
-
-from Products.CMFCore import DirectoryView
-from Products.CMFPlone.utils import ToolInit
-from Products.Archetypes.atapi import *
-from Products.Archetypes import listTypes
-from Products.Archetypes.utils import capitalize
-from config import *
-
-DirectoryView.registerDirectory('skins', product_globals)
-DirectoryView.registerDirectory('skins/zorionagurra',
-                                    product_globals)
+zorionagurraMessageFactory = MessageFactory('Products.zorionagurra')
 
 def initialize(context):
-    # imports packages and types for registration
-    import content
+    """Initializer called when used as a Zope 2 product.
 
+    This is referenced from configure.zcml. Regstrations as a "Zope 2 product"
+    is necessary for GenericSetup profiles to work, for example.
 
-    # Initialize portal content
-    content_types, constructors, ftis = process_types(
-        listTypes(PROJECTNAME),
-        PROJECTNAME)
+    Here, we call the Archetypes machinery to register our content types
+    with Zope and the CMF.
+    """
 
-    cmfutils.ContentInit(
-        PROJECTNAME + ' Content',
-        content_types      = content_types,
-        permission         = DEFAULT_ADD_CONTENT_PERMISSION,
-        extra_constructors = constructors,
-        fti                = ftis,
-        ).initialize(context)
+    # Retrieve the content types that have been registered with Archetypes
+    # This happens when the content type is imported and the registerType()
+    # call in the content type's module is invoked. Actually, this happens
+    # during ZCML processing, but we do it here again to be explicit. Of
+    # course, even if we import the module several times, it is only run
+    # once.
 
+    content_types, constructors, ftis = atapi.process_types(
+        atapi.listTypes(config.PROJECTNAME),
+        config.PROJECTNAME)
 
+    # Now initialize all these content types. The initialization process takes
+    # care of registering low-level Zope 2 factories, including the relevant
+    # add-permission. These are listed in config.py. We use different
+    # permissions for each content type to allow maximum flexibility of who
+    # can add which content types, where. The roles are set up in rolemap.xml
+    # in the GenericSetup profile.
+
+    for atype, constructor in zip(content_types, constructors):
+        utils.ContentInit('%s: %s' % (config.PROJECTNAME, atype.portal_type),
+            content_types      = (atype,),
+            permission         = config.ADD_PERMISSIONS[atype.portal_type],
+            extra_constructors = (constructor,),
+            ).initialize(context)
