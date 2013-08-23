@@ -1,7 +1,7 @@
 """Common configuration constants
 """
 
-PROJECTNAME = 'cs.donedukia'
+PROJECTNAME = 'Products.zorionagurra'
 
 ADD_PERMISSIONS = {
     # -*- extra stuff goes here -*-

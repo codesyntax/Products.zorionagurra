@@ -8,6 +8,7 @@ from Products.Archetypes import atapi
 
 zorionagurraMessageFactory = MessageFactory('Products.zorionagurra')
 
+
 def initialize(context):
     """Initializer called when used as a Zope 2 product.
 
