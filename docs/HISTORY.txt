@@ -4,4 +4,23 @@ Changelog
 1.0dev (unreleased)
 -------------------
 
-- Initial release
+- Plone 4 compatibility
+
+- First eggified version [erral]
+
+
+0.3
+-----
+
+- Minor changes [erral]
+
+0.2
+--------
+
+- Improvements [erral]
+
+
+0.1
+-----
+
+- Initial release [erral]
