@@ -3,15 +3,13 @@
            xmlns:gs="http://namespaces.zope.org/genericsetup"
            i18n_domain="zorionagurra">
 
-  <gs:registerProfile 
-      name="Zorionagurra"
+  <gs:registerProfile
+      name="default"
       title="Zorionagurra"
       description="Profile for zorionagurra"
       directory="profiles/default"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       />
-
 
   <include package=".browser"/>
 

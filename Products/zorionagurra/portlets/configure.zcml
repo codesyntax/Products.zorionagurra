@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="Products.zorionagurra">
+  <!-- Ensure Plone's portlets ZCML has already been processed; without
+       this, we may get a permission lookup error
+  -->
+  <include package="plone.app.portlets" />
+  <!-- -*- extra stuff goes here -*- -->
+
+  <plone:portlet
+      name="Products.zorionagurra.portlets.ZorionagurraPortlet"
+      interface=".zorionagurraportlet.IZorionagurraPortlet"
+      assignment=".zorionagurraportlet.Assignment"
+      view_permission="zope2.View"
+      renderer=".zorionagurraportlet.Renderer"
+      addview=".zorionagurraportlet.AddForm"
+      />
+
+</configure>

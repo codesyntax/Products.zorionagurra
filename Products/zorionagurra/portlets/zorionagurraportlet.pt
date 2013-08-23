@@ -1,0 +1,49 @@
+ <dl class="portlet" id="portlet-zorionagurrak">
+  <dt class="portletHeader">
+    <span class="portletTopLeft"></span>
+    <a href="#" tal:attributes="href
+                                string:${portal_url}/zorion-agurrak"
+       i18n:translate="header_zorionagurrak">
+      Zorion-agurrak
+    </a>
+    <span class="portletTopRight"></span>
+  </dt>
+
+  <tal:items repeat="item python:view.get_latest(5)">
+    <dd tal:define="oddrow repeat/item/odd;
+                    item_object python:item.getObject();
+                    item_type_class python:'contenttype-' + here.plone_utils.normalizeString(item.portal_type)"
+        tal:attributes="class python:test(oddrow, 'portletItem even', 'portletItem odd')">
+      <div tal:attributes="class item_type_class">
+        <a href="#"
+           tal:attributes="href item/getURL">
+          <img src="#" tal:replace="structure item_object/photo_thumb" />
+        </a>
+        <a href="#"
+           tal:attributes="href item/getURL"
+           tal:content="item/Title">
+          Name
+        </a>
+        <span class="portletItemDetails"
+              tal:content="python:toLocalizedTime(item.getDate, long_format=0)">
+          Date
+        </span>
+        <p tal:replace="structure item_object/getText">
+          Text
+        </p>
+      </div>
+    </dd>
+    <div class="visualClear"><!-- --></div>
+  </tal:items>
+
+  <dd class="portletFooter additem">
+    <span class="portletBottomLeft"></span>
+    <a href="" tal:attributes="href
+                               string:${portal_url}/zorion-agurrak/createObject?type_name=Zorionagurra"
+       i18n:translate="label_send_zorionagurra">
+      Send zorion-agurra
+    </a>
+    <span class="portletBottomRight"></span>
+  </dd>
+ </dl>
+</div>

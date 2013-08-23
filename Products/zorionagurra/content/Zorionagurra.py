@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-from AccessControl import ClassSecurityInfo
 
 try:
     from Products.LinguaPlone.public import *
 except ImportError:
     from Products.Archetypes.atapi import *
 
-from Products.zorionagurra.config import *
-
+from zope.interface import implements
+from Products.zorionagurra.config import PROJECTNAME
+from ..interfaces import IZorionagurra
 import DateTime
 
 schema = Schema((
@@ -38,8 +38,7 @@ schema = Schema((
 
     DateTimeField(
         name='date',
-        index='DateIndex:schema',
-        languageIndependent = True,
+        languageIndependent=True,
         default=DateTime.DateTime(),
         widget=CalendarWidget(
             show_hm=False,
@@ -89,9 +88,9 @@ schema = Schema((
         name='photo',
         required=1,
         sizes={
-              'thumb':(50,50),
-              'mini':(150,150),
-              'preview':(400,400),
+              'thumb': (50, 50),
+              'mini': (150, 150),
+              'preview': (400, 400),
               },
         widget=ImageWidget(
             label='Photo',
@@ -109,34 +108,19 @@ Zorionagurra_schema = BaseSchema.copy() + \
     schema.copy()
 
 Zorionagurra_schema['description'].required = 0
-Zorionagurra_schema['description'].widget.visible = {'edit':'hidden',
-                                                     'view':'hidden',
+Zorionagurra_schema['description'].widget.visible = {'edit': 'hidden',
+                                                     'view': 'hidden',
                                                      }
-Zorionagurra_schema['allowDiscussion'].widget.visible = {'edit':'hidden',
-                                                         'view':'hidden',
+Zorionagurra_schema['allowDiscussion'].widget.visible = {'edit': 'hidden',
+                                                         'view': 'hidden',
                                                          }
+
+
 class Zorionagurra(BaseContent):
-    """
-    """
-    security = ClassSecurityInfo()
-    __implements__ = (getattr(BaseContent,'__implements__',()),)
+    """ Birthday greeting """
+    implements(IZorionagurra)
 
-    # This name appears in the 'add' box
-    archetype_name = 'Zorionagurra'
-
-    meta_type = 'Zorionagurra'
     portal_type = 'Zorionagurra'
-    allowed_content_types = []
-    filter_content_types = 0
-    global_allow = 1
-    #content_icon = 'Zorionagurra.gif'
-    immediate_view = 'base_view'
-    default_view = 'base_view'
-    suppl_views = ()
-    typeDescription = "Zorionagurra"
-    typeDescMsgId = 'description_edit_zorionagurra'
-
-    _at_rename_after_creation = True
 
     schema = Zorionagurra_schema
 
@@ -148,7 +132,7 @@ class Zorionagurra(BaseContent):
 
     def at_post_edit_script(self):
         """ Post edit hook """
-        self.setExpirationDate(DateTime.DateTime(self.getDate()).earliestTime() + 1)        
+        self.setExpirationDate(DateTime.DateTime(self.getDate()).earliestTime() + 1)
 
     def computeFullname(self):
         name = self.getField('name').getAccessor(self)()
@@ -171,7 +155,5 @@ class Zorionagurra(BaseContent):
             kwargs['title'] = self.Title()
         return self.getField('photo').tag(self, **kwargs)
 
+
 registerType(Zorionagurra, PROJECTNAME)
-
-
-

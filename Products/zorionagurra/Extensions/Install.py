@@ -44,7 +44,7 @@ def install(self, reinstall=False):
 
     portal = getToolByName(self,'portal_url').getPortalObject()
     setup_tool = getToolByName(portal, 'portal_setup')
-    setup_tool.setImportContext('profile-Products.zorionagurra:Zorionagurra')
+    setup_tool.setImportContext('profile-Products.zorionagurra:default')
     setup_tool.runAllImportSteps()
     setup_tool.setImportContext('profile-CMFPlone:plone')
     print >> out, "Ran all install steps"
@@ -122,7 +122,7 @@ def afterInstall(self, reinstall, product):
 
 
 
-def addFormControllerAction(self, out, controller, template, status, 
+def addFormControllerAction(self, out, controller, template, status,
                                 contentType, button, actionType, action):
     """Add the given action to the portalFormController"""
     controller.addFormAction(template, status, contentType,
